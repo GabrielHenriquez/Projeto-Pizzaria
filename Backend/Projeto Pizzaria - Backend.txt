@@ -1,0 +1,92 @@
+Projeto pizzaria instalações de dependencias e pacotes NodeJS e Typescript:
+
+
+1- Começando o projeto:
+
+yarn init -y
+
+
+
+2- Instalando o Typescript:
+
+yarn add typescript -D
+
+
+
+3- Instalando o ExpresJS e sua Tipagem, vai possibilitar criar-mos as nossas rotas e manipular os dados do input e output da aplicação:
+
+yarn add express
+yarn add @types/express -D
+
+
+
+4- Iniciar o Typescript dentro do projeto:
+
+yarn tsc --init
+
+
+
+5- Instalando biblioteca para rodar o Typescript:
+yarn add ts-node-dev -D
+
+
+
+6- Criando script para rodar a aplicação
+
+"scripts": {
+   "dev": "ts-node-dev src/server.ts	
+}
+
+
+
+8- Instalando biblioteca para tratamento de erros
+
+yarn add express-async-errors
+
+
+
+9- Instalando biblioteca para liberar para qualquer ip/url fazer essa requisição / e install tipagem
+
+yarn add cors
+yarn add @types/cors -D
+
+
+
+10- Instalando o Prisma para desenvolver mais rápido no banco de dados
+
+yarn add prisma
+yarn add @prisma/client
+
+
+
+11- Criar uma migration para rodar no banco de dados: 
+
+yarn prisma migrate dev
+
+
+
+12- Instalando biblioteca para criptografar senha do usuário
+e a tipagem para o JS
+
+yarn add bcryptjs
+yarn add @types/bcryptjs -D
+
+
+
+13- instalando JWT para gerar tokens para usuários logados.
+
+yarn add jsonwebtoken
+yarn add @types/jsonwebtoken -D
+
+
+
+14- Instalando Dotenv para acessar as variáveis ambiente
+
+yarn add dotenv
+
+
+
+15- Instala biblioteca para trabalhar com envio de Imagens
+
+yarn add multer
+yarn add @types/multer -D
