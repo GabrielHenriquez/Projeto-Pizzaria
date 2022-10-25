@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
         marginTop: 24
     },
     title:{
-        fontSize: 30,
+        fontSize: 35,
         fontWeight: "bold",
         color: '#FFF',
         marginRight: 12,
@@ -248,12 +248,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#101026',
         borderRadius: 4,
         width: '100%',
-        height: 40,
+        height: 50,
         marginBottom: 12,
         justifyContent: 'center',
         paddingHorizontal: 8,
         color: '#FFF',
-        fontSize: 20
+        fontSize: 25
     },
     qtdContainer:{
         flexDirection: 'row',
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     qtdText:{
-        fontSize: 20,
+        fontSize: 22,
         fontWeight: 'bold',
         color: '#FFF'
     },

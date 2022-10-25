@@ -62,7 +62,6 @@ export default function Product({categoryList}: CategoryProps){
                 setImage(null)
                 setImageURL('')
             }else{
-                console.log('Caiu no else')
                 toast.warning('Este produto já existe!')
             }
 

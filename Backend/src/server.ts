@@ -1,11 +1,12 @@
 import express, {Request, Response, NextFunction} from "express";
 import 'express-async-errors' //biblioteca para tratamento de erros
-import cors from 'cors' //biblioteca para liberar para qualquer ip/url fazer essa requisição
-import path from 'path' //recurso para caminhos
+const cors = require('cors') //biblioteca para liberar para qualquer ip/url fazer essa requisição
+const path = require('path') //recurso para caminhos
 
 import { router } from "./routes";
 
 const app = express() //Instância do express
+const port = 3000
 
 app.use(express.json()) //Gerar em json nosso express
 app.use(cors())  //Liberando para qualquer ip/url fazer requisição dessa API
@@ -27,4 +28,4 @@ app.use((error: Error, req: Request, res: Response) => {
     })
 })
 
-app.listen(3000, () => console.log('Servidor Online!')) 
+app.listen(port, () => console.log('Servidor Online!')) 

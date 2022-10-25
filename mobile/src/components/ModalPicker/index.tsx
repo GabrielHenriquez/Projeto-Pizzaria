@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
     option:{
         alignItems: 'flex-start',
-        borderTopWidth: 0.9,
+        borderTopWidth: 1,
         borderTopColor: '#8a8a8a',
     },
     item:{

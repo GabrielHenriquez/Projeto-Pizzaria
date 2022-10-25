@@ -1,68 +1,90 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { SafeAreaView, View, Text, Button, StyleSheet , TextInput, TouchableOpacity} from "react-native"
 import {useNavigation} from '@react-navigation/native'
 
 import { NativeStackNavigationProp } from "@react-navigation/native-stack"
 import { StackParamsList } from "../../routes/app.routes"
 
+import {Feather} from '@expo/vector-icons'
+
 import {api} from '../../services/api'
 
+import { AuthContext } from "../../contexts/AuthContext"
 
 export default function Dashboard(){
     const Navigation = useNavigation<NativeStackNavigationProp<StackParamsList>>()
 
     //STATES
     const [number, setNumber] = useState('')
+    const {signOut} = useContext(AuthContext)
 
     //FUNCTIONS
     async function openOrder(){
-        if(number === '') return 
+            if(number === '') return 
 
-        const response = await api.post('/order', {
-            table: Number(number)
-        })
-
-        const {id, table} = response.data
-        
-        Navigation.navigate('Order', 
-        {
-         number: table,
-         order_id: id
-        })
-
-        setNumber('')
+            const response = await api.post('/order', {
+                table: Number(number)
+            })
+    
+            const {id, table} = response.data
+            
+            Navigation.navigate('Order', 
+            {
+             number: table,
+             order_id: id
+            })
+            
+            setNumber('')
     }
 
     //APLICATION
     return(
-        <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>Novo Pedido</Text>
+        <SafeAreaView style={styles.background}>
 
-            <TextInput 
-              style={styles.input}
-              placeholder="Número da mesa"
-              placeholderTextColor='#f0f0f092'
-              keyboardType="numeric"
-              value={number}
-              onChangeText={setNumber}
-            />
+            <View style={styles.header}>
+                <TouchableOpacity onPress={signOut}>
+                    <Feather name="log-out" size={35} color='#FFF'/>
+                </TouchableOpacity>
+            </View>
 
-            <TouchableOpacity onPress={openOrder} style={styles.button}>
-                <Text style={styles.txtButton}>Abrir mesa</Text>
-            </TouchableOpacity>
-            
+            <View style={styles.container}>
+                <Text style={styles.title}>Novo Pedido</Text>
+
+                <TextInput 
+                style={styles.input}
+                placeholder="Número da mesa"
+                placeholderTextColor='#f0f0f092'
+                keyboardType="numeric"
+                value={number}
+                onChangeText={setNumber}
+                />
+
+                <TouchableOpacity onPress={openOrder} style={styles.button}>
+                    <Text style={styles.txtButton}>Abrir mesa</Text>
+                </TouchableOpacity>
+            </View>
 
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
+    background:{
+        flex: 1,
+        backgroundColor: '#1d1d2e',
+    },
+    header:{
+        alignItems: 'flex-end',
+        backgroundColor: '#1d1d2e',
+        paddingVertical: 20,
+        paddingHorizontal: 20,
+    },
     container:{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: 15,
-        backgroundColor: '#1d1d2e'
+        backgroundColor: '#1d1d2e',
     },
     title:{
         fontSize: 30,
